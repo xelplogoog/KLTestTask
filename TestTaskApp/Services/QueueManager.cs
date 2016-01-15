@@ -14,6 +14,16 @@ namespace TestTaskApp.Services
             this.messages = new Queue<Message>();
         }
 
+        public void Push(Message msg)
+        {
+            this.messages.Enqueue(msg);
+        }
+
+        public Message Pop()
+        {
+            return null;
+        }
+
         public int Count
         {
             get

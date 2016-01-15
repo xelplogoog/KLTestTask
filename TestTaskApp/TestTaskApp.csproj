@@ -82,6 +82,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Services\IQueueManager.cs" />
     <Compile Include="Services\QueueManager.cs" />
+    <Compile Include="ViewModels\Command.cs" />
     <Compile Include="ViewModels\IMainWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

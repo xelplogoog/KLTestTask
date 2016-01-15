@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:TestTaskApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <StackPanel>
         <TextBlock Text="{Binding MessagesCount, StringFormat='Messages in queue: {0}'}" />
-    </Grid>
+        <Button Content="Push" Command="{Binding PushMsgToQueue}" />
+    </StackPanel>
 </Window>
