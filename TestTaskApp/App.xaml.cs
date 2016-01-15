@@ -19,6 +19,7 @@ namespace TestTaskApp
             container.RegisterType<IQueueManager, QueueManager>(
                 new ContainerControlledLifetimeManager());
             container.RegisterType<IMainWindowViewModel, MainWindowViewModel>();
+            container.RegisterType<IMessageFactory, MessageFactory>();
 
             var mainWindow = new MainWindow
             {

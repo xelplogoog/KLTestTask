@@ -1,13 +1,20 @@
 ﻿
-
-using System.Windows.Input;
-
 namespace TestTaskApp.ViewModels
 {
+    using System.Windows.Input;
+
     public interface IMainWindowViewModel
     {
         int MessagesCount { get; }
 
-        ICommand PushMsgToQueue { get; } 
+        string PoppedMessage { get; }
+
+        ICommand PushMsgToQueueCmd { get; }
+
+        ICommand PushMsgToQueueAsyncCmd { get; }
+
+        ICommand PopMsdCmd { get; }
+
+        ICommand ClearCmd { get; }
     }
 }

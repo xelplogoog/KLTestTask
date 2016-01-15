@@ -6,8 +6,23 @@
         xmlns:local="clr-namespace:TestTaskApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <StackPanel>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="Width" Value="75" />
+                <Setter Property="Margin" Value="0,4" />
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <StackPanel Margin="4">
         <TextBlock Text="{Binding MessagesCount, StringFormat='Messages in queue: {0}'}" />
-        <Button Content="Push" Command="{Binding PushMsgToQueue}" />
+        <Button Content="Push" Command="{Binding PushMsgToQueueCmd}" />
+        <Button Content="Push Async" Command="{Binding PushMsgToQueueAsyncCmd}" />
+        <Button Content="Clear" Command="{Binding ClearCmd}" ToolTip="Remove all messages from the queue" />
+        <Button Content="Pop" Command="{Binding PopMsdCmd}" />
+        <TextBlock Text="{Binding PoppedMessage, Mode=OneWay}" />
     </StackPanel>
 </Window>

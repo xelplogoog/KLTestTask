@@ -4,10 +4,12 @@ namespace TestTaskApp.Services
 {
     using Models;
     using System.Collections.Generic;
+    using System.Threading;
 
     public class QueueManager : IQueueManager
     {
         private readonly Queue<Message> messages;
+        private readonly object lockObject = new object();
 
         public QueueManager()
         {
@@ -16,19 +18,43 @@ namespace TestTaskApp.Services
 
         public void Push(Message msg)
         {
-            this.messages.Enqueue(msg);
+            lock (lockObject)
+            {
+                this.messages.Enqueue(msg);
+                Monitor.Pulse(lockObject);
+            }
+            
         }
 
         public Message Pop()
         {
-            return null;
+            lock (lockObject)
+            {
+                while (messages.Count == 0)
+                {
+                    Monitor.Wait(lockObject);
+                }
+
+                return messages.Dequeue();
+            }
+        }
+
+        public void Clear()
+        {
+            lock (lockObject)
+            {
+                this.messages.Clear();
+            }
         }
 
         public int Count
         {
             get
             {
-                return this.messages.Count;
+                lock (lockObject)
+                {
+                    return this.messages.Count;
+                }
             }
         }
     }

@@ -11,5 +11,7 @@ namespace TestTaskApp.Services
         void Push(Message msg);
 
         Message Pop();
+
+        void Clear();
     }
 }
